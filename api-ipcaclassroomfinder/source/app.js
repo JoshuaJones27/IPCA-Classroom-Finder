@@ -6,10 +6,10 @@ const mysql = require('mysql');
 const knex = require('knex')({
   client: 'mysql',
   connection: {
-    host: 'fetchcodeserver.mysql.database.azure.com', 
+    host: 'ipcaclassroomfinder.mysql.database.azure.com', 
     port: 3306, 
-    database: 'fetchcode', 
-    user: 'FetchCode', 
+    database: 'ipcaclassroomfinder', 
+    user: 'IPCAClassroomFinder', 
     password: 'sidyfgygIJS956_kjhvfddv87' 
   }
 });
@@ -26,7 +26,7 @@ consign({ cwd: 'source', verbose: false })
   .into(app);
 
 app.get('/', (req, res) => {
-  res.status(200).send('FetchCode');
+  res.status(200).send('IPCAClassroomFinder');
 });
 
 app.use((err, req, res, next) => {
