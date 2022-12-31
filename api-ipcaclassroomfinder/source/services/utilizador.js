@@ -21,18 +21,17 @@ module.exports = (app) => {
     const create = async (req, res) => {
         if(!req.nome) throw new ValidationError('O nome é um campo obrigatorio');
         if(!req.sobrenome) throw new ValidationError('O sobrenome é um campo obrigatorio');
-        if(!req.tipoUtilizador) throw new ValidationError('O tipo utilizador é um campo obrigatorio');
-        if(!req.dataNascimento) throw new ValidationError('A data de nascimento é um campo obrigatorio');
-        if(!req.curso) throw new ValidationError('O curso é um campo obrigatorio');
-        if(!req.nif) throw new ValidationError('O NIF é um campo obrigatorio');
+        if(!req.email) throw new ValidationError('O tipo utilizador é um campo obrigatorio');
+        if(!req.palavraPasse) throw new ValidationError('A data de nascimento é um campo obrigatorio');
+
 
         const newUtilizador = {...req};
-        return app.db('utilizador').insert(newUtilizador, ['nome', 'sobrenome', 'tipoUtilizador', 'dataNascimento', 'curso', 'nif']);
+        return app.db('utilizador').insert(newUtilizador, ['nome', 'sobrenome', 'email', 'palavraPasse']);
     };
 
     /**Atualizar a compra selecionado */
     const update = async (id, utilizador) => {
-        return app.db('utilizador').where({ id }).update(utilizador, ['nome', 'sobrenome', 'tipoUtilizador', 'dataNascimento', 'curso', 'nif']);
+        return app.db('utilizador').where({ id }).update(utilizador, ['nome', 'sobrenome', 'email', 'palavraPasse']);
     };
 
     /**Remover uma compra */
