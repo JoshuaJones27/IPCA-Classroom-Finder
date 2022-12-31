@@ -21,7 +21,6 @@ module.exports = (app) => {
     const create = async (req, res) => {
         if(!req.nome) throw new ValidationError('O Nome é um campo obrigatorio');
         if(!req.descricao) throw new ValidationError('A Descricao é um campo obrigatorio');
-        if(!req.coordenadaFim) throw new ValidationError('A coordenada Fim é um campo obrigatorio');
 
         const newAula = {...req};
         return app.db('aula').insert(newAula, ['nome', 'descricao']);

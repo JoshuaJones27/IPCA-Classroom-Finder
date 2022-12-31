@@ -20,8 +20,8 @@ module.exports = (app) => {
     /**Criação do registo de uma nova compra */
     const create = async (req, res) => {
         if(!req.distanciaRota) throw new ValidationError('A Distancia Rota é um campo obrigatorio');
-        if(!req.coordenadaInicio) throw new ValidationError('A coordenada Inicio é um campo obrigatorio');
-        if(!req.coordenadaFim) throw new ValidationError('A coordenada Fim é um campo obrigatorio');
+        if(!req.coordenadaInicio) throw new ValidationError('A Coordenada Inicio é um campo obrigatorio');
+        if(!req.coordenadaFim) throw new ValidationError('A Coordenada Fim é um campo obrigatorio');
 
         const newRota = {...req};
         return app.db('rota').insert(newRota, ['distanciaRota', 'coordenadaInicio', 'coordenadaFim']);

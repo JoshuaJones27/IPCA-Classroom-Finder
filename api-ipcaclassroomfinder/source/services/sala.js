@@ -19,9 +19,9 @@ module.exports = (app) => {
 
     /**Criação do registo de uma nova compra */
     const create = async (req, res) => {
-        if(!req.nomeSala) throw new ValidationError('O Nome Sala é um campo obrigatorio');
+        if(!req.nomeSala) throw new ValidationError('O Nome da Sala é um campo obrigatorio');
         if(!req.descricao) throw new ValidationError('A Descrição é um campo obrigatorio');
-        if(!req.localizacao) throw new ValidationError('A Localização é um campo obrigatorio');
+        if(!req.localizacao) throw new ValidationError('A Localização da Sala é um campo obrigatorio');
         if(!req.lotacao) throw new ValidationError('A Lotação é um campo obrigatorio');
 
         const newSala = {...req};

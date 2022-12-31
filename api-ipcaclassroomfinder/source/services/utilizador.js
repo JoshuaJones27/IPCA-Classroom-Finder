@@ -19,10 +19,10 @@ module.exports = (app) => {
 
     /**Criação do registo de uma nova compra */
     const create = async (req, res) => {
-        if(!req.nome) throw new ValidationError('O nome é um campo obrigatorio');
-        if(!req.sobrenome) throw new ValidationError('O sobrenome é um campo obrigatorio');
-        if(!req.email) throw new ValidationError('O tipo utilizador é um campo obrigatorio');
-        if(!req.palavraPasse) throw new ValidationError('A data de nascimento é um campo obrigatorio');
+        if(!req.nome) throw new ValidationError('O Nome é um campo obrigatorio');
+        if(!req.sobrenome) throw new ValidationError('O Sobrenome é um campo obrigatorio');
+        if(!req.email) throw new ValidationError('O E-mail é um campo obrigatorio');
+        if(!req.palavraPasse) throw new ValidationError('A Palavra Passe é um campo obrigatorio');
 
 
         const newUtilizador = {...req};
