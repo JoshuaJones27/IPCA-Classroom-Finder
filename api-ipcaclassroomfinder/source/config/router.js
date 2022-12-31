@@ -6,15 +6,16 @@ module.exports = (app) => {
   const secureRouter = express.Router();
 
   secureRouter.use('/utilizador', app.routes.utilizadores);
-  secureRouter.use('/codigoPostal', app.routes.codigosPostais);
-  secureRouter.use('/cor', app.routes.cores);
-  secureRouter.use('/encomenda', app.routes.encomendas);
-  secureRouter.use('/item', app.routes.itens);
-  secureRouter.use('/morada', app.routes.moradas);
-  secureRouter.use('/pagamento', app.routes.pagamentos);
-  secureRouter.use('/tipoItem', app.routes.tiposItens);
-  secureRouter.use('/transporte', app.routes.transportes);
-  secureRouter.use('/compra', app.routes.checkouts);
+  secureRouter.use('/aula', app.routes.aulas);
+  secureRouter.use('/curso', app.routes.cursos);
+  secureRouter.use('/horario', app.routes.horarios);
+  secureRouter.use('/inscrito', app.routes.inscritos);
+  secureRouter.use('/polo', app.routes.polos);
+  secureRouter.use('/professor', app.routes.professores);
+  secureRouter.use('/rota', app.routes.rotas);
+  secureRouter.use('/sala', app.routes.salas);
+  secureRouter.use('/siga', app.routes.sigas);
+  secureRouter.use('/siges', app.routes.sigess);
 
   app.use('/v1', secureRouter);
 };

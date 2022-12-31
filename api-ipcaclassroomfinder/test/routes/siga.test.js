@@ -4,8 +4,8 @@ const app = require('../../source/app');
 
 const secret = '754321';
 
-const ROUTE = '/v1/aula';
-let aulaA;
+const ROUTE = '/v1/siga';
+let sigaA;
 let user;
 
 beforeAll(async () => {
@@ -20,15 +20,14 @@ beforeAll(async () => {
   user = { ...createUser[0] };
   user.token = jwt.encode(user, secret);
 
-  const createAulaA = await app.services.aula.create({
-    nome: 'ISI',
-    descricao: 'Cadeira ...',
+  const createSigaA = await app.services.siga.create({
+    descricao: 'Servico de Gestao do IPCA',
   });
 
-  aulaA = { ...createAulaA[0] };
+  sigaA = { ...createSigaA[0] };
 });
 
-test('Test #1 - Listar as aulas', () => {
+test('Test #1 - Listar SIGA', () => {
   return request(app).get(ROUTE)
     .set('authorization', `bearer ${user.token}`)
     .then((res) => {
@@ -37,18 +36,17 @@ test('Test #1 - Listar as aulas', () => {
     });
 });
 
-test('Test #1.1 - Listar as aulas por ID', () => {
-  return request(app).get(`${ROUTE}/${aulaA.id}`)
+test('Test #1.1 - Listar SIGA por ID', () => {
+  return request(app).get(`${ROUTE}/${sigaA.id}`)
     .set('authorization', `bearer ${user.token}`)
     .then((res) => {
       expect(res.status).toBe(200);
     });
 });
 
-test('Test #3 - Apagar aula', () => {
-  return app.db('aula').insert({
-    nome: 'ISI',
-    email: 'Cadeira ...',
+test('Test #3 - Apagar SIGA', () => {
+  return app.db('siga').insert({
+    descricao: 'Servico de Gestao do IPCA',
   }, ['id']).then((result) => request(app).delete(`${ROUTE}/${result[0].id}`)
     .set('authorization', `bearer ${user.token}`)
     .then((res) => {
