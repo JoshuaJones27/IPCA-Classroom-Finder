@@ -3,24 +3,47 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "bignumber.js": "^9.0.0",
-    "core-util-is": "^1.0.3",
-    "inherits": "^2.0.4",
-    "isarray": "^1.0.0",
-    "mysql": "^2.18.1",
-    "process-nextick-args": "^2.0.1",
-    "readable-stream": "^2.3.7",
-    "safe-buffer": "^5.1.2",
-    "sqlstring": "^2.3.1",
-    "string_decoder": "^1.1.1",
-    "util-deprecate": "^1.0.2"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon source/app.js"
+    "start": "nodemon src/server.js",
+    "lint": "eslint src/** test/** --fix",
+    "test": "jest --watchAll",
+    "test-coverage": "jest --watchAll --coverage --runInBand --forceExit",
+    "migrate": "knex migrate:latest --env test"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.24.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "express": "^4.17.1",
+    "jwt-simple": "0.5.5",
+    "knex": "0.15.2",
+    "nodemon": "^2.0.15",
+    "passport": "0.4.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "8.7.1"
+  },
+  "dependencies": {
+    "axios": "^0.24.0",
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.19.0",
+    "consign": "^0.1.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "express": "^4.17.1",
+    "jest": "^29.3.1",
+    "jwt-simple": "0.5.5",
+    "knex": "0.15.2",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
+    "passport": "0.4.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "8.7.1",
+    "supertest": "^6.3.3"
+  }
 }
