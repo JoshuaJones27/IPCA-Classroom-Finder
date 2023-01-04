@@ -1,11 +1,11 @@
 const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
-    // const findOne = (filter = {}) => {
-    //     return app.db('item').where(filter).select(['id', 'tipoId', 'tamanho', 'descricao', 'stock', 'imagem']);
-    // }
+    const findOne = (filter = {}) => {
+        return app.db('aula').where(filter).select(['id', 'nome', 'descricao']);
+    }
 
-    /**Selecionar todos as compras */
+    /**Selecionar todos as aulas */
     const getAll = async () => {
         return app.db('aula').select(['*']);
     };
@@ -14,8 +14,6 @@ module.exports = (app) => {
     const getAllID = async (filter) => {
         return app.db('aula').where(filter).select(['*']);
     };
-
-    //const findItemByColor = 
 
     /**Criação do registo de uma nova compra */
     const create = async (req, res) => {
@@ -26,19 +24,18 @@ module.exports = (app) => {
         return app.db('aula').insert(newAula, ['nome', 'descricao']);
     };
 
-    /**Atualizar a compra selecionado */
+    /**Atualizar a aula selecionado */
     const update = async (id, aula) => {
         return app.db('aula').where({ id }).update(aula, ['nome', 'descricao']);
     };
 
-    /**Remover uma compra */
+    /**Remover uma aula */
     const remove = async (id) => {
         return app.db('aula').where(id).del();
     };
 
     return {
-        // findOne,
-        //findItemByColor,
+        findOne,
         getAll,
         getAllID,
         create,

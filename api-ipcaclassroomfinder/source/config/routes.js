@@ -6,7 +6,7 @@ module.exports = (app) => {
     app.route('/auth/signup')
       .post(app.routes.utilizadores.signup);
 
-    // UTILIZADORES
+    // UTILIZADOR
     app.route('/utilizador')
       .all(app.config.passport.authenticate())
       .get(app.routes.utilizadores.getAll)
@@ -19,33 +19,33 @@ module.exports = (app) => {
       .put(app.routes.utilizadores.update)
       .delete(app.routes.utilizadores.remove)
 
-    // CODIGO POSTAL
-    app.route('/codigoPostal')
+    // AULA
+    app.route('/aula')
       .all(app.config.passport.authenticate())
-      .get(app.routes.codigosPostais.getAll)
-      .post(app.routes.codigosPostais.create)
-      .delete(app.routes.codigosPostais.remove);
+      .get(app.routes.aulas.getAll)
+      .post(app.routes.aulas.create)
+      .delete(app.routes.aulas.remove);
 
-    app.route('/codigoPostal/:id')
+    app.route('/aula/:id')
       .all(app.config.passport.authenticate())
-      .get(app.routes.codigosPostais.getAllCodPost)
-      .post(app.routes.codigosPostais.create)
-      .put(app.routes.codigosPostais.update)
-      .delete(app.routes.codigosPostais.remove);
+      .get(app.routes.aulas.getAllCodPost)
+      .post(app.routes.aulas.create)
+      .put(app.routes.aulas.update)
+      .delete(app.routes.aulas.remove);
 
     // COR
-    app.route('/cor')
+    app.route('/curso')
       .all(app.config.passport.authenticate())
-      .get(app.routes.cores.getAll)
-      .post(app.routes.cores.create)
-      .delete(app.routes.cores.remove);
+      .get(app.routes.cursos.getAll)
+      .post(app.routes.cursos.create)
+      .delete(app.routes.cursos.remove);
 
-    app.route('/cor/:id')
+    app.route('/curso/:id')
       .all(app.config.passport.authenticate())
-      .get(app.routes.cores.getAllIdCor)
-      .post(app.routes.cores.create)
-      .put(app.routes.cores.update)
-      .delete(app.routes.cores.remove);    
+      .get(app.routes.cursos.getAllIdCor)
+      .post(app.routes.cursos.create)
+      .put(app.routes.cursos.update)
+      .delete(app.routes.cursos.remove);    
 
     // ITEM
     app.route('/item')

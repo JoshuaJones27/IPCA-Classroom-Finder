@@ -1,23 +1,21 @@
 const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
-    // const findOne = (filter = {}) => {
-    //     return app.db('item').where(filter).select(['id', 'tipoId', 'tamanho', 'descricao', 'stock', 'imagem']);
-    // }
+    const findOne = (filter = {}) => {
+        return app.db('utilizador').where(filter).select(['idUtilizador', 'nome', 'sobrenome', 'email', 'palavraPasse']);
+    }
 
-    /**Selecionar todos as compras */
+    /**Selecionar todos os utilizadores */
     const getAll = async () => {
         return app.db('utilizador').select(['*']);
     };
 
-    /**Filtragem apenas as compras por ID */
+    /**Filtragem apenas os utilizadores por ID */
     const getAllID = async (filter) => {
         return app.db('utilizador').where(filter).select(['*']);
     };
 
-    //const findItemByColor = 
-
-    /**Criação do registo de uma nova compra */
+    /**Criação do registo de um novo utilizador */
     const create = async (req, res) => {
         if(!req.nome) throw new ValidationError('O Nome é um campo obrigatorio');
         if(!req.sobrenome) throw new ValidationError('O Sobrenome é um campo obrigatorio');
@@ -29,19 +27,18 @@ module.exports = (app) => {
         return app.db('utilizador').insert(newUtilizador, ['nome', 'sobrenome', 'email', 'palavraPasse']);
     };
 
-    /**Atualizar a compra selecionado */
+    /**Atualizar o utilizador selecionado */
     const update = async (id, utilizador) => {
         return app.db('utilizador').where({ id }).update(utilizador, ['nome', 'sobrenome', 'email', 'palavraPasse']);
     };
 
-    /**Remover uma compra */
+    /**Remover um utilizador */
     const remove = async (id) => {
         return app.db('utilizador').where(id).del();
     };
 
     return {
-        // findOne,
-        //findItemByColor,
+        findOne,
         getAll,
         getAllID,
         create,
