@@ -6,9 +6,6 @@ module.exports = (app) => {
     app.route('/auth/signup')
       .post(app.routes.utilizadores.signup);
 
-    app.route('/auth/forget-password')
-      .put(app.routes.users.forgotPassword());
-
     // UTILIZADORES
     app.route('/utilizador')
       .all(app.config.passport.authenticate())
