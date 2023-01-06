@@ -12,7 +12,7 @@ module.exports = (app) => {
       .get(app.routes.utilizadores.getAll)
       .get(app.routes.utilizadores.getAllID)
       .post(app.routes.utilizadores.create);
-  
+    
     app.route('/utilizador/:id')
       .all(app.config.passport.authenticate())
       .get(app.routes.utilizadores.findOne)
@@ -33,74 +33,71 @@ module.exports = (app) => {
       .put(app.routes.aulas.update)
       .delete(app.routes.aulas.remove);
 
-    // COR
-    app.route('/curso')
+    // ALUNO
+    app.route('/aluno')
       .all(app.config.passport.authenticate())
-      .get(app.routes.cursos.getAll)
-      .post(app.routes.cursos.create)
-      .delete(app.routes.cursos.remove);
+      .get(app.routes.alunos.getAll)
+      .post(app.routes.alunos.create)
+      .delete(app.routes.alunos.remove);
 
-    app.route('/curso/:id')
+    app.route('/aluno/:id')
       .all(app.config.passport.authenticate())
-      .get(app.routes.cursos.getAllIdCor)
-      .post(app.routes.cursos.create)
-      .put(app.routes.cursos.update)
-      .delete(app.routes.cursos.remove);    
+      .get(app.routes.alunos.getAllID)
+      .post(app.routes.alunos.create)
+      .put(app.routes.alunos.update)
+      .delete(app.routes.alunos.remove);    
 
-    // ITEM
-    app.route('/item')
+    // AULA_CURSO
+    app.route('/aulaCurso')
       .all(app.config.passport.authenticate())
-      .get(app.routes.itens.getAll)
-      .post(app.routes.itens.create)
+      .get(app.routes.aulas_cursos.getAll)
 
-    app.route('/item/:id')
+    app.route('/aulaCurso/:id')
       .all(app.config.passport.authenticate())
-      .get(app.routes.itens.getAll)
-      .post(app.routes.itens.create)
-      .put(app.routes.itens.update)
-      .delete(app.routes.itens.remove);
-    
-    // MORADA
-    app.route('/morada')
+      .get(app.routes.aulas_cursos.getAll)
+      .put(app.routes.aulas_cursos.update)
+
+    // AULA_HORARIO
+    app.route('/aulaHorario')
       .all(app.config.passport.authenticate())
-      .get(app.routes.moradas.getAll)
-      .post(app.routes.moradas.create)
-      .delete(app.routes.moradas.remove);
+      .get(app.routes.aulas_horarios.getAll)
+      .post(app.routes.aulas_horarios.create)
+      .delete(app.routes.aulas_horarios.remove);
  
-    app.route('/morada/:id')
+    app.route('/aulaHorario/:id')
      .all(app.config.passport.authenticate())
-     .get(app.routes.moradas.getAll)
-     .post(app.routes.moradas.create)
-     .put(app.routes.moradas.update)
-     .delete(app.routes.moradas.remove);  
+     .get(app.routes.aulas_horarios.getAll)
+     .post(app.routes.aulas_horarios.create)
+     .put(app.routes.aulas_horarios.update)
+     .delete(app.routes.aulas_horarios.remove);  
 
-    // PAGAMENTO
-    app.route('/pagamento')
+    // AULA_INSCRITO
+    app.route('/aulaInscrito')
     .all(app.config.passport.authenticate())
-    .get(app.routes.pagamentos.getAll)
-    .post(app.routes.pagamentos.create)
-    .delete(app.routes.pagamentos.remove);
+    .get(app.routes.aulas_inscritos.getAll)
+    .post(app.routes.aulas_inscritos.create)
+    .delete(app.routes.aulas_inscritos.remove);
 
-    app.route('/pagamento/:id')
+    app.route('/aulaInscrito/:id')
     .all(app.config.passport.authenticate())
-    .get(app.routes.pagamentos.getAll)
-    .post(app.routes.pagamentos.create)
-    .put(app.routes.pagamentos.update)
-    .delete(app.routes.pagamentos.remove);
+    .get(app.routes.aulas_inscritos.getAll)
+    .post(app.routes.aulas_inscritos.create)
+    .put(app.routes.aulas_inscritos.update)
+    .delete(app.routes.aulas_inscritos.remove);
 
-    // TIPOS ITENS
-    app.route('/tipoItem')
+    // AULA_SALA
+    app.route('/aulaSala')
     .all(app.config.passport.authenticate())
-    .get(app.routes.tipoItens.getAll)
-    .post(app.routes.tipoItens.create)
-    .delete(app.routes.tipoItens.remove);
+    .get(app.routes.aulas_salas.getAll)
+    .post(app.routes.aulas_salas.create)
+    .delete(app.routes.aulas_salas.remove);
 
-    app.route('/tipoItem/:id')
+    app.route('/aulaSala/:id')
     .all(app.config.passport.authenticate())
-    .get(app.routes.tipoItens.getAll)
-    .put(app.routes.tipoItens.update)
-    .post(app.routes.tipoItens.create)
-    .delete(app.routes.tipoItens.remove);
+    .get(app.routes.aulas_salas.getAll)
+    .put(app.routes.aulas_salas.update)
+    .post(app.routes.aulas_salas.create)
+    .delete(app.routes.aulas_salas.remove);
     
     // TRANSPORTES
     app.route('/transporte')

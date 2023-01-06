@@ -14,6 +14,11 @@ module.exports = (app) => {
   secureRouter.use('/professor', app.routes.professores);
   secureRouter.use('/rota', app.routes.rotas);
   secureRouter.use('/sala', app.routes.salas);
+  secureRouter.use('/aluno', app.routes.alunos);
+  secureRouter.use('/aulaCurso', app.routes.aulas_cursos);
+  secureRouter.use('/aulaHorario', app.routes.aulas_horarios);
+  secureRouter.use('/aulaInscrito', app.routes.aulas_inscritos);
+  secureRouter.use('/aulaSala', app.routes.aulas_salas);
 
   app.use('/v1', secureRouter);
 };
