@@ -1,23 +1,21 @@
 const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
-    // const findOne = (filter = {}) => {
-    //     return app.db('item').where(filter).select(['id', 'tipoId', 'tamanho', 'descricao', 'stock', 'imagem']);
-    // }
+    const findOne = (filter = {}) => {
+        return app.db('professor').where(filter).select(['idProfessor', 'idEspecialidade', 'idUtilizador']);
+    }
 
-    /**Selecionar todos as compras */
+    /**Selecionar todos os professores */
     const getAll = async () => {
         return app.db('professor').select(['*']);
     };
 
-    /**Filtragem apenas as compras por ID */
+    /**Filtragem apenas os professores por ID */
     const getAllID = async (filter) => {
         return app.db('professor').where(filter).select(['*']);
     };
 
-    //const findItemByColor = 
-
-    /**Criação do registo de uma nova compra */
+    /**Criação do registo de um novo professor */
     const create = async (req, res) => {
         if(!req.nome) throw new ValidationError('O Nome é um campo obrigatorio');
         if(!req.sobrenome) throw new ValidationError('O Sobrenome é um campo obrigatorio');
@@ -27,19 +25,18 @@ module.exports = (app) => {
         return app.db('professor').insert(newProfessor, ['nome', 'sobrenome', 'especialidade']);
     };
 
-    /**Atualizar a compra selecionado */
+    /**Atualizar o professor selecionado */
     const update = async (id, professor) => {
         return app.db('professor').where({ id }).update(professor, ['nome', 'sobrenome', 'especialidade']);
     };
 
-    /**Remover uma compra */
+    /**Remover um professor */
     const remove = async (id) => {
         return app.db('professor').where(id).del();
     };
 
     return {
-        // findOne,
-        //findItemByColor,
+        findOne,
         getAll,
         getAllID,
         create,

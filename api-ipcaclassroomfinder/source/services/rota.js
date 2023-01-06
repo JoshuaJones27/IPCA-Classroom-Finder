@@ -1,23 +1,21 @@
 const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
-    // const findOne = (filter = {}) => {
-    //     return app.db('item').where(filter).select(['id', 'tipoId', 'tamanho', 'descricao', 'stock', 'imagem']);
-    // }
+    const findOne = (filter = {}) => {
+        return app.db('rota').where(filter).select(['idRota', 'distanciaRota', 'coordenadaInicio', 'coordenadaFim', 'idSala']);
+    }
 
-    /**Selecionar todos as compras */
+    /**Selecionar todos as rotas */
     const getAll = async () => {
         return app.db('rota').select(['*']);
     };
 
-    /**Filtragem apenas as compras por ID */
+    /**Filtragem apenas as rotas por ID */
     const getAllID = async (filter) => {
         return app.db('rota').where(filter).select(['*']);
     };
 
-    //const findItemByColor = 
-
-    /**Criação do registo de uma nova compra */
+    /**Criação do registo de uma nova rota */
     const create = async (req, res) => {
         if(!req.distanciaRota) throw new ValidationError('A Distancia Rota é um campo obrigatorio');
         if(!req.coordenadaInicio) throw new ValidationError('A Coordenada Inicio é um campo obrigatorio');
@@ -27,19 +25,18 @@ module.exports = (app) => {
         return app.db('rota').insert(newRota, ['distanciaRota', 'coordenadaInicio', 'coordenadaFim']);
     };
 
-    /**Atualizar a compra selecionado */
+    /**Atualizar a rota selecionado */
     const update = async (id, rota) => {
         return app.db('rota').where({ id }).update(rota, ['distanciaRota', 'coordenadaInicio', 'coordenadaFim']);
     };
 
-    /**Remover uma compra */
+    /**Remover uma rota */
     const remove = async (id) => {
         return app.db('rota').where(id).del();
     };
 
     return {
-        // findOne,
-        //findItemByColor,
+        findOne,
         getAll,
         getAllID,
         create,

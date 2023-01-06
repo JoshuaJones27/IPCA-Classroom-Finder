@@ -19,6 +19,8 @@ module.exports = (app) => {
   secureRouter.use('/aulaHorario', app.routes.aulas_horarios);
   secureRouter.use('/aulaInscrito', app.routes.aulas_inscritos);
   secureRouter.use('/aulaSala', app.routes.aulas_salas);
+  secureRouter.use('/utilizadorAula', app.routes.utilizadores_aulas);
+  secureRouter.use('/especialidade', app.routes.especialidades);
 
   app.use('/v1', secureRouter);
 };

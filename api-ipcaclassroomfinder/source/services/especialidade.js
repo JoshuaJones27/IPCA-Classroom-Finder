@@ -5,19 +5,17 @@ module.exports = (app) => {
         return app.db('especialidade').where(filter).select(['idEspecialidade', 'nomeEspecialidade']);
     }
 
-    /**Selecionar todos as compras */
+    /**Selecionar todos as especialidades */
     const getAll = async () => {
         return app.db('especialidade').select(['*']);
     };
 
-    /**Filtragem apenas as compras por ID */
+    /**Filtragem apenas as especialidades por ID */
     const getAllID = async (filter) => {
         return app.db('especialidade').where(filter).select(['*']);
     };
 
-    //const findItemByColor = 
-
-    /**Criação do registo de uma nova compra */
+    /**Criação do registo de uma nova especialidade */
     const create = async (req, res) => {
         if(!req.nomeEspecialidade) throw new ValidationError('O Nome da Especialidade é um campo obrigatorio');
 
@@ -25,12 +23,12 @@ module.exports = (app) => {
         return app.db('especialidade').insert(newEspecialidade, ['nomeEspecialidade']);
     };
 
-    /**Atualizar a compra selecionado */
+    /**Atualizar a especialidade selecionado */
     const update = async (id, especialidade) => {
         return app.db('especialidade').where({ id }).update(especialidade, ['nomeEspecialidade']);
     };
 
-    /**Remover uma compra */
+    /**Remover uma especialidade */
     const remove = async (id) => {
         return app.db('especialidade').where(id).del();
     };

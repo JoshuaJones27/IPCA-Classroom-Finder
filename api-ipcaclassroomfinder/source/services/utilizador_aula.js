@@ -5,17 +5,17 @@ module.exports = (app) => {
         return app.db('utilizador_aulas').where(filter).select(['idUtilizador', 'idAula']);
     }
 
-    /**Selecionar todos as compras */
+    /**Selecionar todos os utilizador_aula */
     const getAll = async () => {
         return app.db('utilizador_aulas').select(['*']);
     };
 
-    /**Filtragem apenas as compras por ID */
+    /**Filtragem apenas os utilizador_aula por ID */
     const getAllID = async (filter) => {
         return app.db('utilizador_aulas').where(filter).select(['*']);
     };
 
-    /**Criação do registo de uma nova compra */
+    /**Criação do registo de um novo utilizador_aula */
     const create = async (req, res) => {
         if(!req.nomeSala) throw new ValidationError('O Nome da Sala é um campo obrigatorio');
         if(!req.descricao) throw new ValidationError('A Descrição é um campo obrigatorio');
@@ -26,12 +26,12 @@ module.exports = (app) => {
         return app.db('utilizador_aulas').insert(newUtilizadorAula, ['idUtilizador', 'idAula']);
     };
 
-    /**Atualizar a compra selecionado */
+    /**Atualizar o utilizador_aula selecionado */
     const update = async (id, utilizadorAula) => {
         return app.db('utilizador_aulas').where({ id }).update(utilizadorAula, ['idUtilizador', 'idAula']);
     };
 
-    /**Remover uma compra */
+    /**Remover um utilizador_aula */
     const remove = async (id) => {
         return app.db('utilizador_aulas').where(id).del();
     };

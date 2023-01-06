@@ -99,45 +99,129 @@ module.exports = (app) => {
     .post(app.routes.aulas_salas.create)
     .delete(app.routes.aulas_salas.remove);
     
-    // TRANSPORTES
-    app.route('/transporte')
+    // CURSO
+    app.route('/curso')
     .all(app.config.passport.authenticate())
-    .get(app.routes.transportes.getAll)
-    .post(app.routes.transportes.create)
-    .delete(app.routes.transportes.remove);
+    .get(app.routes.cursos.getAll)
+    .post(app.routes.cursos.create)
+    .delete(app.routes.cursos.remove);
 
-    app.route('/transporte/:id')
+    app.route('/curso/:id')
     .all(app.config.passport.authenticate())
-    .get(app.routes.transportes.getAll)
-    .post(app.routes.transportes.create)
-    .put(app.routes.transportes.update)
-    .delete(app.routes.transportes.remove); 
+    .get(app.routes.cursos.getAll)
+    .post(app.routes.cursos.create)
+    .put(app.routes.cursos.update)
+    .delete(app.routes.cursos.remove); 
 
-    // ENCOMENDA
-    app.route('/encomenda')
+    // ESPECIALIDADE
+    app.route('/especialidade')
     .all(app.config.passport.authenticate())
-    .get(app.routes.encomendas.getAll)
-    .post(app.routes.encomendas.create)
-    .delete(app.routes.encomendas.remove);
+    .get(app.routes.especialidades.getAll)
+    .post(app.routes.especialidades.create)
+    .delete(app.routes.especialidades.remove);
 
-    app.route('/encomenda/:id')
+    app.route('/especialidade/:id')
     .all(app.config.passport.authenticate())
-    .get(app.routes.encomendas.getAll)
-    .put(app.routes.encomendas.update)
-    .post(app.routes.encomendas.create)
-    .delete(app.routes.encomendas.remove); 
+    .get(app.routes.especialidades.getAll)
+    .put(app.routes.especialidades.update)
+    .post(app.routes.especialidades.create)
+    .delete(app.routes.especialidades.remove); 
 
-    // Compras
-    app.route('/compra')
+    // HORARIO
+    app.route('/horario')
     .all(app.config.passport.authenticate())
-    .get(app.routes.checkouts.getAll)
-    .post(app.routes.checkouts.create)
-    .delete(app.routes.checkouts.remove);
+    .get(app.routes.horarios.getAll)
+    .post(app.routes.horarios.create)
+    .delete(app.routes.horarios.remove);
 
-    app.route('/compra/:id')
+    app.route('/horario/:id')
     .all(app.config.passport.authenticate())
-    .get(app.routes.checkouts.getAll)
-    .post(app.routes.checkouts.create)
-    .put(app.routes.checkouts.update)
-    .delete(app.routes.checkouts.remove); 
+    .get(app.routes.horarios.getAll)
+    .post(app.routes.horarios.create)
+    .put(app.routes.horarios.update)
+    .delete(app.routes.horarios.remove); 
+
+    // INSCRITO
+    app.route('/inscrito')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.inscritos.getAll)
+    .post(app.routes.inscritos.create)
+    .delete(app.routes.inscritos.remove);
+
+    app.route('/inscrito/:id')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.inscritos.getAll)
+    .post(app.routes.inscritos.create)
+    .put(app.routes.inscritos.update)
+    .delete(app.routes.inscritos.remove); 
+
+    // POLO
+    app.route('/polo')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.polos.getAll)
+    .post(app.routes.polos.create)
+    .delete(app.routes.polos.remove);
+
+    app.route('/polo/:id')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.polos.getAll)
+    .post(app.routes.polos.create)
+    .put(app.routes.polos.update)
+    .delete(app.routes.polos.remove); 
+
+    // PROFESSOR
+    app.route('/professor')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.professores.getAll)
+    .post(app.routes.professores.create)
+    .delete(app.routes.professores.remove);
+
+    app.route('/professor/:id')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.professores.getAll)
+    .post(app.routes.professores.create)
+    .put(app.routes.professores.update)
+    .delete(app.routes.professores.remove); 
+
+    // ROTA
+    app.route('/rota')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.rotas.getAll)
+    .post(app.routes.rotas.create)
+    .delete(app.routes.rotas.remove);
+
+    app.route('/rota/:id')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.rotas.getAll)
+    .post(app.routes.rotas.create)
+    .put(app.routes.rotas.update)
+    .delete(app.routes.rotas.remove); 
+
+    // SALA
+    app.route('/sala')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.salas.getAll)
+    .post(app.routes.salas.create)
+    .delete(app.routes.salas.remove);
+
+    app.route('/sala/:id')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.salas.getAll)
+    .post(app.routes.salas.create)
+    .put(app.routes.salas.update)
+    .delete(app.routes.salas.remove); 
+
+    // UTILIZADOR_AULA
+    app.route('/utilizadorAula')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.utilizadores_aulas.getAll)
+    .post(app.routes.utilizadores_aulas.create)
+    .delete(app.routes.utilizadores_aulas.remove);
+
+    app.route('/utilizadorAula/:id')
+    .all(app.config.passport.authenticate())
+    .get(app.routes.utilizadores_aulas.getAll)
+    .post(app.routes.utilizadores_aulas.create)
+    .put(app.routes.utilizadores_aulas.update)
+    .delete(app.routes.utilizadores_aulas.remove);
   };

@@ -1,23 +1,21 @@
 const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
-    // const findOne = (filter = {}) => {
-    //     return app.db('item').where(filter).select(['id', 'tipoId', 'tamanho', 'descricao', 'stock', 'imagem']);
-    // }
+    const findOne = (filter = {}) => {
+        return app.db('sala').where(filter).select(['idSala', 'nomeSala', 'descricao', 'localizacao', 'lotacao']);
+    }
 
-    /**Selecionar todos as compras */
+    /**Selecionar todos as salas */
     const getAll = async () => {
         return app.db('sala').select(['*']);
     };
 
-    /**Filtragem apenas as compras por ID */
+    /**Filtragem apenas as salas por ID */
     const getAllID = async (filter) => {
         return app.db('sala').where(filter).select(['*']);
     };
 
-    //const findItemByColor = 
-
-    /**Criação do registo de uma nova compra */
+    /**Criação do registo de uma nova sala */
     const create = async (req, res) => {
         if(!req.nomeSala) throw new ValidationError('O Nome da Sala é um campo obrigatorio');
         if(!req.descricao) throw new ValidationError('A Descrição é um campo obrigatorio');
@@ -28,19 +26,18 @@ module.exports = (app) => {
         return app.db('sala').insert(newSala, ['nomeSala', 'descricao', 'localizacao' , 'lotacao']);
     };
 
-    /**Atualizar a compra selecionado */
+    /**Atualizar a sala selecionado */
     const update = async (id, sala) => {
         return app.db('sala').where({ id }).update(sala, ['nomeSala', 'descricao', 'localizacao' , 'lotacao']);
     };
 
-    /**Remover uma compra */
+    /**Remover uma sala */
     const remove = async (id) => {
         return app.db('sala').where(id).del();
     };
 
     return {
-        // findOne,
-        //findItemByColor,
+        findOne,
         getAll,
         getAllID,
         create,

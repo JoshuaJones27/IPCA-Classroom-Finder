@@ -1,23 +1,21 @@
 const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
-    // const findOne = (filter = {}) => {
-    //     return app.db('item').where(filter).select(['id', 'tipoId', 'tamanho', 'descricao', 'stock', 'imagem']);
-    // }
+    const findOne = (filter = {}) => {
+        return app.db('item').where(filter).select(['idInscritos', 'numero']);
+    }
 
-    /**Selecionar todos as compras */
+    /**Selecionar todos os inscritos */
     const getAll = async () => {
         return app.db('inscrito').select(['*']);
     };
 
-    /**Filtragem apenas as compras por ID */
+    /**Filtragem apenas os inscritos por ID */
     const getAllID = async (filter) => {
         return app.db('inscrito').where(filter).select(['*']);
     };
 
-    //const findItemByColor = 
-
-    /**Criação do registo de uma nova compra */
+    /**Criação do registo de um novo inscrito */
     const create = async (req, res) => {
         if(!req.numero) throw new ValidationError('O Numero é um campo obrigatorio');
 
@@ -25,19 +23,18 @@ module.exports = (app) => {
         return app.db('inscrito').insert(newInscrito, ['numero']);
     };
 
-    /**Atualizar a compra selecionado */
+    /**Atualizar o inscrito selecionado */
     const update = async (id, inscrito) => {
         return app.db('inscrito').where({ id }).update(inscrito, ['numero']);
     };
 
-    /**Remover uma compra */
+    /**Remover um inscrito */
     const remove = async (id) => {
         return app.db('inscrito').where(id).del();
     };
 
     return {
-        // findOne,
-        //findItemByColor,
+        findOne,
         getAll,
         getAllID,
         create,
