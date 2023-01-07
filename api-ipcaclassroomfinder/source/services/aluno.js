@@ -2,6 +2,7 @@ const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
     const findOne = (filter = {}) => {
+        //Encontra um aluno pelo filtro
         return app.db('aluno').where(filter).select(['idAluno', 'curso', 'idUtilizador']);
     }
 
