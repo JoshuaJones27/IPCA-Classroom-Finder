@@ -33,8 +33,8 @@ module.exports = (app) => {
     };
 
     /**Remover um utilizador */
-    const remove = async (id) => {
-        return app.db('utilizador').where(id).del();
+    const remove = async (idUtilizador) => {
+        return app.db('utilizador').where(idUtilizador).del();
     };
 
     return {
