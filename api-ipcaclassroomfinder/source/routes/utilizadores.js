@@ -31,7 +31,7 @@ module.exports = (app) => {
     });
     
     router.put('/:id', (req, res, next) => {
-        app.services.utilizador.update(req.params.idUtilizador, req.body)
+        app.services.utilizador.update(req.params.id, req.body)
           .then((result) => res.status(204).json(result[0]))
           .catch((err) => next(err));
     });

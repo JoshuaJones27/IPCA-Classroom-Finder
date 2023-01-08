@@ -28,8 +28,8 @@ module.exports = (app) => {
     };
 
     /**Atualizar o utilizador selecionado */
-    const update = async (id, utilizador) => {
-        return app.db('utilizador').where({ id }).update(utilizador, ['nome', 'sobrenome', 'email', 'palavraPasse']);
+    const update = async (idUtilizador, utilizador) => {
+        return app.db('utilizador').where({ idUtilizador }).update(utilizador, ['nome', 'sobrenome', 'email', 'palavraPasse']);
     };
 
     /**Remover um utilizador */
