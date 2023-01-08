@@ -2,17 +2,17 @@ const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
     const findOne = (filter = {}) => {
-        return app.db('sala').where(filter).select(['idSala', 'nomeSala', 'descricao', 'localizacao', 'lotacao']);
+        return app.db('salas').where(filter).select(['idSala', 'nomeSala', 'descricao', 'localizacao', 'lotacao']);
     }
 
     /**Selecionar todos as salas */
     const getAll = async () => {
-        return app.db('sala').select(['*']);
+        return app.db('salas').select(['*']);
     };
 
     /**Filtragem apenas as salas por ID */
     const getAllID = async (filter) => {
-        return app.db('sala').where(filter).select(['*']);
+        return app.db('salas').where(filter).select(['*']);
     };
 
     /**Criação do registo de uma nova sala */
@@ -23,17 +23,17 @@ module.exports = (app) => {
         if(!req.lotacao) throw new ValidationError('A Lotação é um campo obrigatorio');
 
         const newSala = {...req};
-        return app.db('sala').insert(newSala, ['nomeSala', 'descricao', 'localizacao' , 'lotacao']);
+        return app.db('salas').insert(newSala, ['nomeSala', 'descricao', 'localizacao' , 'lotacao']);
     };
 
     /**Atualizar a sala selecionado */
-    const update = async (id, sala) => {
-        return app.db('sala').where({ id }).update(sala, ['nomeSala', 'descricao', 'localizacao' , 'lotacao']);
+    const update = async (idSala, sala) => {
+        return app.db('salas').where({ idSala }).update(sala, ['nomeSala', 'descricao', 'localizacao' , 'lotacao']);
     };
 
     /**Remover uma sala */
     const remove = async (id) => {
-        return app.db('sala').where(id).del();
+        return app.db('salas').where(id).del();
     };
 
     return {
