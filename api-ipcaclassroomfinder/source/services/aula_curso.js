@@ -16,8 +16,8 @@ module.exports = (app) => {
     };
 
     /**Atualizar a aulas_curso selecionado */
-    const update = async (id, aulaCurso) => {
-        return app.db('aulas_cursos').where({ id }).update(aulaCurso, ['idAula', 'idCurso']);
+    const update = async (idAula, aulaCurso) => {
+        return app.db('aulas_cursos').where({ idAula }).update(aulaCurso, ['idAula', 'idCurso']);
     };
 
     return {

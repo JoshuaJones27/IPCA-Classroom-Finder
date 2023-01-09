@@ -24,13 +24,13 @@ module.exports = (app) => {
     };
 
     /**Atualizar a especialidade selecionado */
-    const update = async (id, especialidade) => {
-        return app.db('especialidade').where({ id }).update(especialidade, ['nomeEspecialidade']);
+    const update = async (idEspecialidade, especialidade) => {
+        return app.db('especialidade').where({ idEspecialidade }).update(especialidade, ['nomeEspecialidade']);
     };
 
     /**Remover uma especialidade */
-    const remove = async (id) => {
-        return app.db('especialidade').where(id).del();
+    const remove = async (idEspecialidade) => {
+        return app.db('especialidade').where(idEspecialidade).del();
     };
 
     return {

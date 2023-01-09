@@ -2,17 +2,17 @@ const ValidationError = require('../errors/validationError');
 
 module.exports = (app) => {
     const findOne = (filter = {}) => {
-        return app.db('horario').where(filter).select(['idHorario', 'horaInicio', 'horaFim']);
+        return app.db('horarios').where(filter).select(['idHorario', 'horaInicio', 'horaFim']);
     }
 
     /**Selecionar todos os horarios */
     const getAll = async () => {
-        return app.db('horario').select(['*']);
+        return app.db('horarios').select(['*']);
     };
 
     /**Filtragem apenas os horarios por ID */
     const getAllID = async (filter) => {
-        return app.db('horario').where(filter).select(['*']);
+        return app.db('horarios').where(filter).select(['*']);
     };
 
     /**Criação do registo de um novo horario */
@@ -21,17 +21,17 @@ module.exports = (app) => {
         if(!req.horaFim) throw new ValidationError('A Hora de Fim é um campo obrigatorio');
 
         const newHorario = {...req};
-        return app.db('horario').insert(newHorario, ['horaInicio', 'horaFim']);
+        return app.db('horarios').insert(newHorario, ['horaInicio', 'horaFim']);
     };
 
     /**Atualizar o horario selecionado */
-    const update = async (id, horario) => {
-        return app.db('horario').where({ id }).update(horario, ['horaInicio', 'horaFim']);
+    const update = async (idHorario, horario) => {
+        return app.db('horarios').where({ idHorario }).update(horario, ['horaInicio', 'horaFim']);
     };
 
     /**Remover um horario */
-    const remove = async (id) => {
-        return app.db('horario').where(id).del();
+    const remove = async (idHorario) => {
+        return app.db('horarios').where(idHorario).del();
     };
 
     return {

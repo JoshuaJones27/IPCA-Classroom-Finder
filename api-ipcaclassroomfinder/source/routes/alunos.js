@@ -30,7 +30,7 @@ module.exports = (app) => {
     // Cria um route do tipo GET para o /aluno/:id que recebe os dados de um aluno em especifico
     router.get('/:id', (req, res, next) => {
         // Chama o metodo getALLID do servico dos alunos
-        app.services.aluno.getAllID({ id: req.params.id })
+        app.services.aluno.getAllID({ idAluno: req.params.id })
         // Se tiver sucesso retorna os dados da resposta JSON
         .then((result) => res.status(200).json(result))
         // Se houver um erro passa para o proximo middleware
@@ -40,7 +40,7 @@ module.exports = (app) => {
     // Cria uma route do tipo DELETE para o /aluno/:id que remove os dados de um aluno em especifico
     router.delete('/:id', (req, res, next) => {
         // Chama o metodo remove do servico dos alunos com os parametros requiridos
-        app.services.aluno.remove({ id: req.params.id})
+        app.services.aluno.remove({ idAluno: req.params.id})
             // Se tiver sucesso retorna os dados da resposta JSON
           .then((result) => res.status(204).json(result[0]))
           // Se houver um erro passa para o proximo middleware

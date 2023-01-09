@@ -32,8 +32,8 @@ module.exports = (app) => {
     };
 
     /**Remover uma sala */
-    const remove = async (id) => {
-        return app.db('salas').where(id).del();
+    const remove = async (idSala) => {
+        return app.db('salas').where(idSala).del();
     };
 
     return {

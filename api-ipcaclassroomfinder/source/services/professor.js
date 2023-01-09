@@ -17,22 +17,21 @@ module.exports = (app) => {
 
     /**Criação do registo de um novo professor */
     const create = async (req, res) => {
-        if(!req.nome) throw new ValidationError('O Nome é um campo obrigatorio');
-        if(!req.sobrenome) throw new ValidationError('O Sobrenome é um campo obrigatorio');
-        if(!req.especialidade) throw new ValidationError('A Especialidade é um campo obrigatorio');
+        if(!req.idEspecialidade) throw new ValidationError('O ID Especialidade é um campo obrigatorio');
+        if(!req.idUtilizador) throw new ValidationError('O ID Utilizador é um campo obrigatorio');
 
         const newProfessor = {...req};
-        return app.db('professor').insert(newProfessor, ['nome', 'sobrenome', 'especialidade']);
+        return app.db('professor').insert(newProfessor, ['idEspecialidade', 'idUtilizador']);
     };
 
     /**Atualizar o professor selecionado */
-    const update = async (id, professor) => {
-        return app.db('professor').where({ id }).update(professor, ['nome', 'sobrenome', 'especialidade']);
+    const update = async (idProfessor, professor) => {
+        return app.db('professor').where({ idProfessor }).update(professor, ['idEspecialidade', 'idUtilizador']);
     };
 
     /**Remover um professor */
-    const remove = async (id) => {
-        return app.db('professor').where(id).del();
+    const remove = async (idProfessor) => {
+        return app.db('professor').where(idProfessor).del();
     };
 
     return {

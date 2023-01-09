@@ -16,8 +16,8 @@ module.exports = (app) => {
     };
 
     /**Atualizar a aula selecionado */
-    const update = async (id, aulaSala) => {
-        return app.db('aulas_salas').where({ id }).update(aulaSala, ['idAula', 'idSala']);
+    const update = async (idAula, aulaSala) => {
+        return app.db('aulas_salas').where({ idAula }).update(aulaSala, ['idAula', 'idSala']);
     };
 
     return {

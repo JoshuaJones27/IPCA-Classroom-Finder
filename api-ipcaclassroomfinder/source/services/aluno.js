@@ -19,14 +19,15 @@ module.exports = (app) => {
     /**Criação do registo de uma nova compra */
     const create = async (req, res) => {
         if(!req.curso) throw new ValidationError('O Curso é um campo obrigatorio');
+        if(!req.idUtilizador) throw new ValidationError('O ID Utilizador é um campo obrigatorio');
 
         const newAluno = {...req};
-        return app.db('aluno').insert(newAluno, ['curso']);
+        return app.db('aluno').insert(newAluno, ['curso', 'idUtilizador']);
     };
 
     /**Atualizar a aula selecionado */
-    const update = async (id, aluno) => {
-        return app.db('aluno').where({ id }).update(aluno, ['curso']);
+    const update = async (idAluno, aluno) => {
+        return app.db('aluno').where({ idAluno }).update(aluno, ['curso', 'idUtilizador']);
     };
 
     /**Remover uma aula */
