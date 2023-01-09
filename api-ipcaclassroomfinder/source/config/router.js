@@ -15,7 +15,6 @@ module.exports = (app) => {
   secureRouter.use('/inscrito', app.routes.inscritos);
   secureRouter.use('/polo', app.routes.polos);
   secureRouter.use('/professor', app.routes.professores);
-  secureRouter.use('/rota', app.routes.rotas);
   secureRouter.use('/sala', app.routes.salas);
   secureRouter.use('/aluno', app.routes.alunos);
   secureRouter.use('/aulaCurso', app.routes.aulas_cursos);

@@ -183,20 +183,6 @@ module.exports = (app) => {
     .put(app.routes.professores.update)
     .delete(app.routes.professores.remove); 
 
-    // ROTA
-    app.route('/rota')
-    .all(app.config.passport.authenticate())
-    .get(app.routes.rotas.getAll)
-    .post(app.routes.rotas.create)
-    .delete(app.routes.rotas.remove);
-
-    app.route('/rota/:id')
-    .all(app.config.passport.authenticate())
-    .get(app.routes.rotas.getAll)
-    .post(app.routes.rotas.create)
-    .put(app.routes.rotas.update)
-    .delete(app.routes.rotas.remove); 
-
     // SALA
     app.route('/sala')
     .all(app.config.passport.authenticate())
