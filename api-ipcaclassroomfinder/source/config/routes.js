@@ -28,7 +28,6 @@ module.exports = (app) => {
 
     app.route('/aula/:id')
       .all(app.config.passport.authenticate())
-      .get(app.routes.aulas.getAllCodPost)
       .post(app.routes.aulas.create)
       .put(app.routes.aulas.update)
       .delete(app.routes.aulas.remove);
