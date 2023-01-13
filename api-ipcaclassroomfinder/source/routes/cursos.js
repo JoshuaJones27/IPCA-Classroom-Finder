@@ -29,6 +29,9 @@ module.exports = (app) => {
           .then((result) => res.status(204).json(result[0]))
           .catch((err) => next(err));
     });
+
+
+    
     
     router.put('/:id', (req, res, next) => {
         app.services.curso.update(req.params.id, req.body)
