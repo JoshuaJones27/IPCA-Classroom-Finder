@@ -1,12 +1,11 @@
 const express = require('express');
 
 module.exports = (app) => {
-  // Cria a rota para o caminho da autenticacao, usando a route dos utilizadores
-  app.use('/auth', app.routes.utilizadores);
-
+  
   // Cria uma rota express para as rotas seguras
   const secureRouter = express.Router();
-
+  // Cria a rota para o caminho da autenticacao, usando a route dos utilizadores
+  secureRouter.use('/auth', app.routes.auths);
   // Cria rotas para cada um dos caminhos em baixo com a rota correspondente
   secureRouter.use('/utilizador', app.routes.utilizadores);
   secureRouter.use('/aula', app.routes.aulas);
