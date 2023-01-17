@@ -10,32 +10,13 @@ module.exports = (app) => {
   const router = express.Router();
 
   router.post('/signin', (req, res, next) => {
-    const {email, password} = req.body
-
-    if(!email)
-    {
-      res.status(422).json({msg: "Email is required!"})
-    }
-    if(!password)
-    {
-      res.status(422).json({msg: "Password is required!"})
-    }
-   
-
-    app.services.utilizador.getAll({ email: req.body.email })
-      .then((user) => {
-        if (!user) throw new ValidationError('Autenticação inválida! #2');
-
-
-            if(req.body.password===user.password) {
+    app.services.utilizador.findOne({ email: req.body.email})
+    .then((user) => {
+        if (!user[0]) res.status(403).json({"Error":"User Nao encontrado 1"});
+            if(req.body.password === user[0].palavraPasse) {
                   var token = jwt.sign({ email: req.body.email }, 'receba');    
-                  
-                  res.status(200).json({ token: token });
-
-            } else throw new ValidationError('Autenticação inválida!');
-
-
-       
+                  res.status(200).json({ token: token , "user": user[0]});
+            } else res.status(403).json({"Error":"User Nao encontrado"});
       }).catch((err) => next(err));
   });
 
