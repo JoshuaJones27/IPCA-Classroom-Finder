@@ -10,6 +10,16 @@ module.exports = (app) => {
   const router = express.Router();
 
   router.post('/signin', (req, res, next) => {
+    const {email, password} = req.body
+
+    if(!email)
+    {
+      res.status(422).json({msg: "Email is required!"})
+    }
+    if(!password)
+    {
+      res.status(422).json({msg: "Password is required!"})
+    }
    
 
     app.services.utilizador.getAll({ email: req.body.email })
