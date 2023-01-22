@@ -27,6 +27,24 @@ module.exports = (app) => {
         return app.db('utilizador').insert(newUtilizador, ['nome', 'sobrenome', 'email', 'palavraPasse']);
     };
 
+    const forgotPassword = async (filter) => {
+        if (!filter.email) throw new ValidationError('O email é um campo obrigatório');
+        if (!filter.n_telemovel) throw new ValidationError('O número telemóvel é um campo obrigatório');
+        if (!filter.password) throw new ValidationError('A password é um campo obrigatório');
+        if (!filter.confirmpassword) throw new ValidationError('A password é um campo obrigatório');
+        if (filter.password !== filter.confirmpassword) throw new ValidationError('As password têm que coincidir');
+        if (!emailRegex.test(filter.email)) throw new ValidationError('O email não segue os padrões convencionais!');
+        if (!passwordRegex.test(filter.password)) throw new ValidationError('A password não segue os padrões convencionais!');
+        filter.password = getPasswordHash(filter.password);
+    
+        const result = await app.db('utilizadores').where('email', filter.email).first();
+    
+        if (result.n_telemovel == filter.n_telemovel) {
+          return app.db('utilizadores').where('n_telemovel', filter.n_telemovel).update('password', filter.password);
+        }
+        throw new ValidationError('Verifique os seus detalhes!');
+      };
+
     /**Atualizar o utilizador selecionado */
     const update = async (idUtilizador, utilizador) => {
         return app.db('utilizador').where({ idUtilizador }).update(utilizador, ['nome', 'sobrenome', 'email', 'palavraPasse']);
@@ -41,6 +59,7 @@ module.exports = (app) => {
         findOne,
         getAll,
         getAllID,
+        forgotPassword,
         create,
         update,
         remove,

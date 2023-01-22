@@ -56,6 +56,5 @@ module.exports = (app) => {
           // Se houver um erro passa para o proximo middleware
           .catch((err) => next(err));
     });
-
     return router;
 };
