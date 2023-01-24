@@ -29,9 +29,7 @@ module.exports = (app) => {
 
     const forgotPassword = async (filter) => {
         if (!filter.email) throw new ValidationError('O email é um campo obrigatório');
-        if (!filter.password) throw new ValidationError('A password é um campo obrigatório');
-        if (!filter.confirmpassword) throw new ValidationError('A password é um campo obrigatório');
-        if (filter.password !== filter.confirmpassword) throw new ValidationError('As password têm que coincidir');
+        if (!filter.palavraPasse) throw new ValidationError('A password é um campo obrigatório');
         if (!emailRegex.test(filter.email)) throw new ValidationError('O email não segue os padrões convencionais!');
     
         const result = await app.db('utilizadores').where('email', filter.email).first();
