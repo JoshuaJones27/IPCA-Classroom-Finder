@@ -5,7 +5,7 @@ module.exports = (app) => {
 
     app.route('/auth/signup')
       .post(app.routes.auths.signup);
-    app.route('/auth/forget-password')
+    app.route('/auth/forgetPassword')
       .put(app.routes.auths.forgetPassword);
 
     // UTILIZADOR
