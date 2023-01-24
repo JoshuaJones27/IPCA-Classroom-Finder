@@ -32,7 +32,7 @@ module.exports = (app) => {
         if (!filter.palavraPasse) throw new ValidationError('A password é um campo obrigatório');
     
         const result = await app.db('utilizador').where('email', filter.email).first();
-        throw new ValidationError('Verifique os seus detalhes!');
+        //throw new ValidationError('Verifique os seus detalhes!');
       };
 
     /**Atualizar o utilizador selecionado */
